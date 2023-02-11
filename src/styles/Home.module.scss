@@ -1,0 +1,120 @@
+@use "@/styles/base/mixin" as mixin;
+.container {
+  border: 1px solid black;
+  padding: 1.4rem 1rem 2rem;
+  @include mixin.tablet {
+    padding: 3rem 2rem;
+  }
+  a {
+    text-decoration: inherit;
+    display: inline-block;
+    border-bottom: 1px solid black;
+    &:hover {
+      background-color: rgb(217, 217, 217);
+    }
+  }
+  .heading {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: 400;
+    padding-bottom: 0.3rem;
+    a {
+      text-decoration: inherit;
+      display: inline-block;
+      border-bottom: 1px solid black;
+    }
+  }
+  section {
+    padding: 1rem 1rem 1rem;
+    max-width: 800px;
+    border-top: 5px solid black;
+    @include mixin.tablet {
+      padding: 2.5rem 3rem 2.8rem;
+    }
+    .success {
+      margin-bottom: 1rem;
+      font-weight: 700;
+      color: green;
+    }
+    .error {
+      margin-bottom: 1rem;
+      font-weight: 700;
+      color: rgb(175, 3, 3);
+    }
+    .products {
+      .product {
+        line-height: 1.5;
+        margin-bottom: 1rem;
+        span {
+          font-weight: 600;
+        }
+      }
+    }
+    .input {
+      width: 100%;
+      margin-bottom: 1rem;
+      position: relative;
+      .label {
+        margin-bottom: 0.4rem;
+        display: block;
+        position: absolute;
+        left: 10px;
+        top: -7px;
+        font-size: 1rem;
+        background-color: #fff;
+        padding: 0 5px;
+        z-index: 1;
+        font-weight: 300;
+      }
+      input,
+      textarea {
+        width: 100%;
+        border-radius: 3px;
+        border: 1px solid #7a7a7a;
+        line-height: 2;
+        padding: 0.5rem 0.3rem 0.5rem 0.5rem;
+        font-size: 0.8rem;
+        margin-bottom: 0.3rem;
+        @include mixin.tablet {
+          line-height: 2.7;
+          font-size: 0.9rem;
+        }
+      }
+      textarea {
+        height: 60px;
+      }
+    }
+    .buttonarea {
+      input {
+        width: 100%;
+        border-radius: 3px;
+        border: 2px solid blue;
+        line-height: 2;
+        padding: 0.5rem 0.3rem;
+        font-size: 0.9rem;
+        margin-bottom: 0.3rem;
+        letter-spacing: 0.2em;
+        cursor: pointer;
+        font-weight: 600;
+        text-transform: uppercase;
+        @include mixin.tablet {
+          letter-spacing: 0.56em;
+          line-height: 2.7;
+          padding: 0.5rem 0.3rem;
+          font-size: 0.9rem;
+        }
+        &:hover {
+          background-color: rgb(239, 239, 239);
+        }
+        &.warning {
+          color: white;
+          border: 2px solid rgb(245, 41, 41);
+          background-color: rgb(245, 41, 41);
+          &:hover {
+            background-color: rgb(210, 8, 8);
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+@use "./base/mixin.scss" as mixin;
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600&family=Roboto:wght@400;500;700&display=swap");
+@import "./base/reset.scss";
+
+html,
+body {
+  font-family: "Raleway", sans-serif;
+  padding: 0;
+  margin: 0;
+  font-style: normal;
+  font-weight: 400;
+}
+h1 {
+  font-size: 2rem;
+  letter-spacing: 0.03em;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  color: blue;
+  @include mixin.tablet {
+    font-size: 3rem;
+  }
+}
+h2 {
+  letter-spacing: -0.03em;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  @include mixin.tablet {
+    font-size: 1.5rem;
+  }
+}
+p {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.2;
+  margin-top: 1rem;
+}
+ul li {
+  font-size: 0.7rem;
+  @include mixin.tablet {
+    font-size: 0.8rem;
+  }
+}
