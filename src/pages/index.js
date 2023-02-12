@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import { CiTrash } from "react-icons/ci";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "@/styles/Home.module.scss";
@@ -16,7 +17,7 @@ export default function Home() {
   const [deletedError, setDeletedError] = useState(false);
 
   async function addProduct() {
-    const productName = productNameRef.current.value;
+    const productName = productNameRef.current.value.trim();
     if (productName.length < 3) return;
     const postData = {
       method: "POST",
@@ -62,16 +63,15 @@ export default function Home() {
     console.log(response);
   }
 
-  async function deleteProduct() {
-    const productIDToDelete = productIDToDeleteRef.current.value;
-    if (!productIDToDelete.length) return;
+  async function deleteProduct(id) {
+    if (!id) return;
     const postData = {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        product_id: productIDToDelete,
+        product_id: id,
       }),
     };
     const res = await fetch(
@@ -87,8 +87,8 @@ export default function Home() {
   }
 
   async function updateProduct() {
-    const productIDToUpdate = productIDToUpdateRef.current.value;
-    const productNameToUpdate = productNameToUpdateRef.current.value;
+    const productIDToUpdate = productIDToUpdateRef.current.value.trim();
+    const productNameToUpdate = productNameToUpdateRef.current.value.trim();
     if (!productIDToUpdate.length) return;
     const postData = {
       method: "PATCH",
@@ -138,23 +138,45 @@ export default function Home() {
         <title>CRUD NEXT.JS Tutorial with Next JS API endpoints</title>
       </Head>
       <div className={styles.container}>
-        <h1>CRUD Next.Js API Demo</h1>
-        <p>
-          Create, Read, Update, Delete database data in React, Node and Next.JS
-          by Omar Elbaga{" "}
-          <a
-            href="https://github.com/oelbaga/nextjs-mysql"
-            target="_blank"
-            rel="noreferrer"
-          >
-            GitHub
-          </a>
-        </p>
-        <div className={styles.heading}>
-          <a href="/api/products" target="_blank" rel="noreferrer">
-            Database API data
-          </a>
-        </div>
+        <section className={styles.main}>
+          <h1>CRUD Next.Js API Demo</h1>
+          <p>
+            Create, Read, Update, Delete database data in React, Node and
+            Next.JS by Omar Elbaga{" "}
+            <a
+              href="https://github.com/oelbaga/nextjs-mysql"
+              target="_blank"
+              rel="noreferrer"
+            >
+              GitHub
+            </a>
+          </p>
+          <div className={styles.heading}>
+            <a href="/api/products" target="_blank" rel="noreferrer">
+              Database API data
+            </a>
+          </div>
+        </section>
+        <section>
+          <div className={styles.read}>
+            <h2>Read</h2>
+            <div className={styles.products}>
+              {products.map((item, index) => {
+                return (
+                  <div key={item.product_id} className={styles.product}>
+                    <span>product_id</span>: {item.product_id} <br />{" "}
+                    <span>product_name</span>: {item.product_name}{" "}
+                    <CiTrash
+                      className={styles.icons}
+                      onClick={() => deleteProduct(item.product_id)}
+                    />
+                  </div>
+                );
+              })}
+              {!products.length ? <>No products found</> : null}
+            </div>
+          </div>
+        </section>
         <section>
           <div className={styles.create}>
             <h2>Create</h2>
@@ -170,21 +192,6 @@ export default function Home() {
                 type="button"
                 onClick={addProduct}
               />
-            </div>
-          </div>
-        </section>
-        <section>
-          <div className={styles.read}>
-            <h2>Read</h2>
-            <div className={styles.products}>
-              {products.map((item, index) => {
-                return (
-                  <div key={item.product_id} className={styles.product}>
-                    <span>Id</span>:{item.product_id} <br /> <span>Name</span>:
-                    {item.product_name}
-                  </div>
-                );
-              })}
             </div>
           </div>
         </section>
@@ -225,22 +232,26 @@ export default function Home() {
                 className={`${styles.button} ${styles.warning}`}
                 value="Delete"
                 type="button"
-                onClick={deleteProduct}
+                onClick={() =>
+                  deleteProduct(productIDToDeleteRef.current.value)
+                }
               />
             </div>
           </div>
         </section>
-        <p>
-          Create, Read, Update, Delete database data in React, Node and Next.JS
-          by Omar Elbaga{" "}
-          <a
-            href="https://github.com/oelbaga/nextjs-mysql"
-            target="_blank"
-            rel="noreferrer"
-          >
-            GitHub
-          </a>
-        </p>
+        <footer>
+          <p>
+            Create, Read, Update, Delete database data in React, Node and
+            Next.JS by Omar Elbaga{" "}
+            <a
+              href="https://github.com/oelbaga/nextjs-mysql"
+              target="_blank"
+              rel="noreferrer"
+            >
+              GitHub
+            </a>
+          </p>
+        </footer>
       </div>
     </>
   );
