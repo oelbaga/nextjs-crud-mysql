@@ -1,7 +1,10 @@
 @use "@/styles/base/mixin" as mixin;
 .container {
   border: 1px solid black;
-  padding: 1.4rem 1rem 2rem;
+  padding: 1.4rem 0.7rem 2rem;
+  @include mixin.small {
+    padding: 1.4rem 1.3rem 2rem;
+  }
   @include mixin.tablet {
     padding: 3rem 2rem;
   }
@@ -34,9 +37,12 @@
     padding: 1rem 1rem 1rem;
     max-width: 800px;
     border-top: 5px solid black;
+    @include mixin.small {
+      padding: 2rem 1rem 2rem;
+    }
     &.main {
       border-top: 0px;
-      padding: 0rem 1rem 0.5rem;
+      padding: 0.5rem 1rem 0.5rem;
       @include mixin.tablet {
         padding: 0rem 1rem 1rem;
       }
@@ -107,7 +113,7 @@
     .buttonarea {
       input {
         width: 100%;
-        border-radius: 3px;
+        border-radius: 6px;
         border: 2px solid blue;
         line-height: 2;
         padding: 0.5rem 0.3rem;

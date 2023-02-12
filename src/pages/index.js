@@ -135,14 +135,14 @@ export default function Home() {
     <>
       {" "}
       <Head>
-        <title>CRUD NEXT.JS Tutorial with Next JS API endpoints</title>
+        <title>CRUD With Next.Js & MySQL Demo</title>
       </Head>
       <div className={styles.container}>
         <section className={styles.main}>
-          <h1>CRUD Next.Js API Demo</h1>
+          <h1>CRUD With Next.Js & MySQL Demo</h1>
           <p>
-            Create, Read, Update, Delete database data in React, Node and
-            Next.JS by Omar Elbaga{" "}
+            Create, Read, Update, Delete database data in React, Node, Next.js
+            and MySQL by Omar Elbaga{" "}
             <a
               href="https://github.com/oelbaga/nextjs-mysql"
               target="_blank"
