@@ -91,7 +91,7 @@ export default function Home() {
     const productNameToUpdate = productNameToUpdateRef.current.value.trim();
     if (!productIDToUpdate.length) return;
     const postData = {
-      method: "PATCH",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
@@ -140,7 +140,7 @@ export default function Home() {
       <div className={styles.container}>
         <section className={styles.main}>
           <h1>CRUD With Next.Js & MySQL Demo</h1>
-          <p>
+          {/* <p>
             Create, Read, Update, Delete database data in React, Node, Next.js
             and MySQL by Omar Elbaga{" "}
             <a
@@ -150,7 +150,7 @@ export default function Home() {
             >
               GitHub
             </a>
-          </p>
+          </p> */}
           <div className={styles.heading}>
             <a href="/api/products" target="_blank" rel="noreferrer">
               Database API data

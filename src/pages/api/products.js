@@ -29,7 +29,7 @@ export default async function handler(req, res) {
     res.status(200).json({ response: { message: message, product: product } });
   }
 
-  if (req.method === "PATCH") {
+  if (req.method === "PUT") {
     const productId = req.body.product_id;
     const productName = req.body.product_name;
     const updateProducts = await query({
