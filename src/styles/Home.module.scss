@@ -74,6 +74,13 @@
         span {
           font-weight: 600;
         }
+        img {
+          display: block;
+          width: 100px;
+          border-radius: 10px;
+          height: 100px;
+          object-fit: cover;
+        }
       }
     }
     .input {
