@@ -1,5 +1,4 @@
 import mysql from "mysql2/promise";
-import fs from "fs";
 
 export async function query({ query, values = [] }) {
   // PlanetScale;
